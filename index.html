@@ -1,0 +1,1284 @@
+<!doctype html>
+<html lang="pt-AO">
+  <head>
+    <!-- Meta básicas -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- SEO: Title optimizado -->
+    <title>
+      KIHOTO – Limpeza, Recolha de Resíduos e Serviços Industriais em Luanda
+    </title>
+
+    <!-- SEO: Meta description -->
+    <meta
+      name="description"
+      content="KIHOTO – Comércio Geral, Indústria e Prestação de Serviços em Luanda, Angola. Limpeza profissional, recolha de resíduos ao domicílio, portos, aeroportos e navios. Disponível 24 horas."
+    />
+
+    <!-- SEO: Canonical -->
+    <link rel="canonical" href="https://kihoto.vercel.app/" />
+
+    <!-- SEO: Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="KIHOTO – Limpeza e Recolha de Resíduos em Luanda"
+    />
+    <meta
+      property="og:description"
+      content="Serviços de limpeza, recolha de resíduos ao domicílio, portos, aeroportos e navios. Comércio geral e serviços industriais. Aberto 24 horas em Luanda."
+    />
+    <meta property="og:url" content="https://kihoto.vercel.app/" />
+    <meta property="og:locale" content="pt_AO" />
+    <meta property="og:site_name" content="KIHOTO" />
+
+    <!-- SEO: Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="KIHOTO – Limpeza e Recolha de Resíduos em Luanda"
+    />
+    <meta
+      name="twitter:description"
+      content="Serviços de limpeza, recolha de resíduos, comércio geral e serviços industriais em Luanda. Aberto 24 horas."
+    />
+
+    <!-- Favicon (usa o SVG, mas podes trocar para favicon.jpg) -->
+    <link rel="icon" type="image/jpeg" href="favicon.jpg" />
+
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- CSS principal -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Schema.org: LocalBusiness -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "KIHOTO – Comércio Geral, Indústria e Prestação de Serviços",
+        "alternateName": "KIHOTO",
+        "description": "Empresa de serviços de limpeza, recolha de resíduos, comércio geral e serviços industriais em Luanda, Angola.",
+        "url": "https://kihoto.vercel.app/",
+        "telephone": "+244923894645",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Luanda",
+          "addressRegion": "Luanda",
+          "addressCountry": "AO"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -8.8368,
+          "longitude": 13.2344
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "00:00",
+          "closes": "23:59"
+        }
+      }
+    </script>
+
+    <!-- Schema.org: Serviços -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "provider": {
+          "@type": "LocalBusiness",
+          "name": "KIHOTO"
+        },
+        "serviceType": "Serviços de Limpeza e Higiene",
+        "areaServed": {
+          "@type": "City",
+          "name": "Luanda"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <!-- =============================== -->
+    <!-- CABEÇALHO FIXO                  -->
+    <!-- =============================== -->
+    <header class="cabecalho-fixo" id="cabecalho">
+      <div class="conteiner cabecalho-conteudo">
+        <!-- Logo -->
+        <!-- Logo -->
+        <a
+          href="#inicio"
+          class="logo-link"
+          aria-label="KIHOTO - Página inicial"
+        >
+          <img
+            src="logo.jpeg"
+            alt="KIHOTO – Comércio Geral, Indústria e Prestação de Serviços"
+            class="logo-imagem"
+          />
+        </a>
+
+        <!-- Menu de navegação (desktop) -->
+        <nav
+          class="menu-navegacao"
+          id="menuNavegacao"
+          aria-label="Menu principal"
+        >
+          <ul class="menu-lista">
+            <li><a href="#inicio" class="menu-link ativo">Início</a></li>
+            <li><a href="#servicos" class="menu-link">Serviços</a></li>
+            <li><a href="#sobre" class="menu-link">Sobre Nós</a></li>
+            <li><a href="#vantagens" class="menu-link">Vantagens</a></li>
+            <li><a href="#testemunhos" class="menu-link">Testemunhos</a></li>
+            <li><a href="#contacto" class="menu-link">Contacto</a></li>
+          </ul>
+        </nav>
+
+        <!-- Botão contactar (desktop) -->
+        <a href="tel:+244923894645" class="botao-contactar-cabecalho">
+          Contactar Agora
+        </a>
+
+        <!-- Botão hambúrguer (mobile) -->
+        <button
+          class="botao-hamburguer"
+          id="botaoHamburguer"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+        >
+          <span class="hamburguer-linha"></span>
+          <span class="hamburguer-linha"></span>
+          <span class="hamburguer-linha"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- =============================== -->
+    <!-- SECÇÃO HERO                     -->
+    <!-- =============================== -->
+    <section class="seccao-hero" id="inicio">
+      <div class="hero-fundo" aria-hidden="true">
+        <div class="hero-blob hero-blob-1"></div>
+        <div class="hero-blob hero-blob-2"></div>
+        <div class="hero-blob hero-blob-3"></div>
+      </div>
+      <div class="conteiner hero-conteudo">
+        <span class="hero-etiqueta animar-ao-scroll"
+          >Aberto 24 Horas em Luanda</span
+        >
+        <h1 class="hero-titulo animar-ao-scroll">
+          Soluções Profissionais de
+          <span class="texto-destaque">Limpeza e Resíduos</span> para a Sua
+          Empresa
+        </h1>
+        <p class="hero-subtitulo animar-ao-scroll">
+          A KIHOTO oferece serviços de limpeza, recolha de resíduos ao
+          domicílio, a bordo de navios, em portos e aeroportos, além de comércio
+          geral e serviços industriais em toda a região de Luanda.
+        </p>
+        <div class="hero-botoes animar-ao-scroll">
+          <a href="#contacto" class="botao-primario">Solicitar Orçamento</a>
+          <a href="#servicos" class="botao-secundario">Ver Serviços</a>
+        </div>
+        <div class="hero-indicadores animar-ao-scroll">
+          <div class="indicador">
+            <strong>24h</strong>
+            <span>Disponibilidade</span>
+          </div>
+          <div class="indicador-divisor"></div>
+          <div class="indicador">
+            <strong>6+</strong>
+            <span>Serviços</span>
+          </div>
+          <div class="indicador-divisor"></div>
+          <div class="indicador">
+            <strong>Luanda</strong>
+            <span>Cobertura</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- SECÇÃO SERVIÇOS                 -->
+    <!-- =============================== -->
+    <section class="seccao-servicos" id="servicos">
+      <div class="conteiner">
+        <div class="seccao-cabecalho animar-ao-scroll">
+          <span class="seccao-etiqueta">O Que Fazemos</span>
+          <h2 class="seccao-titulo">Os Nossos Serviços</h2>
+          <p class="seccao-descricao">
+            Oferecemos soluções completas de limpeza, recolha de resíduos,
+            comércio geral e serviços industriais, adaptados às necessidades de
+            cada cliente em Luanda.
+          </p>
+        </div>
+        <div class="servicos-grade">
+          <!-- Serviço 1 -->
+          <article class="cartao-servico animar-ao-scroll">
+            <div class="cartao-icone">
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14 8L10 14V38C10 39.1 10.9 40 12 40H36C37.1 40 38 39.1 38 38V14L34 8H14Z"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 14H38"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M20 20C20 23.3 22.7 26 26 26C29.3 26 32 23.3 32 20"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3 class="cartao-titulo">Limpeza e Higiene</h3>
+            <p class="cartao-descricao">
+              Serviços profissionais de limpeza e higiene para espaços
+              corporativos, industriais e residenciais em Luanda.
+            </p>
+          </article>
+
+          <!-- Serviço 2 -->
+          <article class="cartao-servico animar-ao-scroll">
+            <div class="cartao-icone">
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M8 12C8 10.9 8.9 10 10 10H38C39.1 10 40 10.9 40 12V36C40 37.1 39.1 38 38 38H10C8.9 38 8 37.1 8 36V12Z"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <path d="M8 18H40" stroke="currentColor" stroke-width="2.5" />
+                <path
+                  d="M16 26H24"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M16 32H20"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3 class="cartao-titulo">Recolha de Resíduos ao Domicílio</h3>
+            <p class="cartao-descricao">
+              Recolha eficiente de resíduos sólidos directamente na sua porta,
+              com horários flexíveis e equipamento adequado.
+            </p>
+          </article>
+
+          <!-- Serviço 3 -->
+          <article class="cartao-servico animar-ao-scroll">
+            <div class="cartao-icone">
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M6 36L14 20L22 28L34 10L42 20"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M6 40H42"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <circle cx="14" cy="20" r="2" fill="currentColor" />
+                <circle cx="34" cy="10" r="2" fill="currentColor" />
+              </svg>
+            </div>
+            <h3 class="cartao-titulo">Recolha de Resíduos a Bordo de Navios</h3>
+            <p class="cartao-descricao">
+              Gestão e recolha de resíduos em navios atracados no Porto de
+              Luanda, cumprindo normas ambientais internacionais.
+            </p>
+          </article>
+
+          <!-- Serviço 4 -->
+          <article class="cartao-servico animar-ao-scroll">
+            <div class="cartao-icone">
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <path
+                  d="M4 40H44"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M8 40V20L24 8L40 20V40"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M20 40V28H28V40"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M16 20H32"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  opacity="0.5"
+                />
+              </svg>
+            </div>
+            <h3 class="cartao-titulo">Limpeza em Portos e Aeroportos</h3>
+            <p class="cartao-descricao">
+              Limpeza especializada para infraestruturas de grande dimensão como
+              portos marítimos e aeroportos em Angola.
+            </p>
+          </article>
+
+          <!-- Serviço 5 -->
+          <article class="cartao-servico animar-ao-scroll">
+            <div class="cartao-icone">
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <rect
+                  x="6"
+                  y="14"
+                  width="36"
+                  height="24"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+                <path d="M6 22H42" stroke="currentColor" stroke-width="2.5" />
+                <path
+                  d="M14 14V10"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M34 14V10"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                />
+                <rect
+                  x="12"
+                  y="26"
+                  width="8"
+                  height="6"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <rect
+                  x="24"
+                  y="26"
+                  width="12"
+                  height="2"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+                <rect
+                  x="24"
+                  y="32"
+                  width="8"
+                  height="2"
+                  rx="1"
+                  stroke="currentColor"
+                  stroke-width="2"
+                />
+              </svg>
+            </div>
+            <h3 class="cartao-titulo">Comércio Geral</h3>
+            <p class="cartao-descricao">
+              Comércio por grosso e a retalho de produtos diversos, com
+              qualidade garantida e preços competitivos no mercado angolano.
+            </p>
+          </article>
+
+          <!-- Serviço 6 -->
+          <article class="cartao-servico animar-ao-scroll">
+            <div class="cartao-icone">
+              <svg
+                viewBox="0 0 48 48"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="24"
+                  cy="24"
+                  r="18"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                />
+                <path
+                  d="M24 12V24L32 28"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10 18H14"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M34 18H38"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M24 6V10"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <h3 class="cartao-titulo">Serviços Industriais</h3>
+            <p class="cartao-descricao">
+              Soluções industriais completas, desde manutenção até serviços
+              especializados, para apoiar o crescimento do seu negócio.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- SECÇÃO SOBRE NÓS                -->
+    <!-- =============================== -->
+    <section class="seccao-sobre" id="sobre">
+      <div class="conteiner sobre-grade">
+        <div class="sobre-imagem animar-ao-scroll">
+          <div class="sobre-imagem-caixa">
+            <img
+              src="https://picsum.photos/seed/kihoto-sobre/600/500.jpg"
+              alt="Equipa da KIHOTO a realizar serviços de limpeza em Luanda"
+              width="600"
+              height="500"
+              loading="lazy"
+            />
+            <div class="sobre-experiencia">
+              <strong>+10</strong>
+              <span>Anos de Experiência</span>
+            </div>
+          </div>
+        </div>
+        <div class="sobre-texto animar-ao-scroll">
+          <span class="seccao-etiqueta">Sobre Nós</span>
+          <h2 class="seccao-titulo">
+            A KIHOTO é a Sua Parceira de Confiança em Luanda
+          </h2>
+          <p>
+            A
+            <strong
+              >KIHOTO – Comércio Geral, Indústria e Prestação de
+              Serviços</strong
+            >
+            é uma empresa angolana sediada em Luanda, dedicada a oferecer
+            soluções integradas de limpeza, gestão de resíduos, comércio geral e
+            serviços industriais.
+          </p>
+          <p>
+            Com uma equipa qualificada e equipamentos modernos, actuamos em
+            diversos sectores, desde o domicílio até grandes infraestruturas
+            como portos e aeroportos, sempre com o compromisso da qualidade e da
+            pontualidade.
+          </p>
+          <ul class="sobre-lista">
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Disponíveis 24 horas por dia
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Equipamentos modernos e adequados
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Cumprimento de normas ambientais
+            </li>
+            <li>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              Cobertura em toda a região de Luanda
+            </li>
+          </ul>
+          <a href="#contacto" class="botao-primario">Fale Connosco</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- SECÇÃO PORQUÊ ESCOLHER          -->
+    <!-- =============================== -->
+    <section class="seccao-vantagens" id="vantagens">
+      <div class="conteiner">
+        <div class="seccao-cabecalho animar-ao-scroll">
+          <span class="seccao-etiqueta">Porquê Escolher-nos</span>
+          <h2 class="seccao-titulo">As Vantagens de Trabalhar com a KIHOTO</h2>
+          <p class="seccao-descricao">
+            Somos reconhecidos pela qualidade, fiabilidade e compromisso com a
+            satisfação dos nossos clientes em Luanda.
+          </p>
+        </div>
+        <div class="vantagens-grade">
+          <!-- Vantagem 1 -->
+          <div class="cartao-vantagem animar-ao-scroll">
+            <div class="vantagem-numero">01</div>
+            <h3 class="vantagem-titulo">Disponibilidade 24 Horas</h3>
+            <p class="vantagem-descricao">
+              Estamos sempre disponíveis, seja de dia ou de noite, para
+              responder às suas necessidades de limpeza e recolha de resíduos.
+            </p>
+          </div>
+          <!-- Vantagem 2 -->
+          <div class="cartao-vantagem animar-ao-scroll">
+            <div class="vantagem-numero">02</div>
+            <h3 class="vantagem-titulo">Equipa Especializada</h3>
+            <p class="vantagem-descricao">
+              Contamos com profissionais treinados e experientes, capazes de
+              lidar com qualquer desafio em limpeza e serviços industriais.
+            </p>
+          </div>
+          <!-- Vantagem 3 -->
+          <div class="cartao-vantagem animar-ao-scroll">
+            <div class="vantagem-numero">03</div>
+            <h3 class="vantagem-titulo">Equipamentos Modernos</h3>
+            <p class="vantagem-descricao">
+              Investimos continuamente em equipamentos de última geração para
+              garantir resultados de excelência em cada serviço.
+            </p>
+          </div>
+          <!-- Vantagem 4 -->
+          <div class="cartao-vantagem animar-ao-scroll">
+            <div class="vantagem-numero">04</div>
+            <h3 class="vantagem-titulo">Preços Competitivos</h3>
+            <p class="vantagem-descricao">
+              Oferecemos soluções de qualidade a preços justos e competitivos,
+              adaptados ao orçamento de cada cliente.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- SECÇÃO TESTEMUNHOS E CLASSIFICAÇÕES -->
+    <!-- =============================== -->
+    <section class="seccao-testemunhos" id="testemunhos">
+      <div class="conteiner">
+        <div class="seccao-cabecalho animar-ao-scroll">
+          <span class="seccao-etiqueta">Testemunhos</span>
+          <h2 class="seccao-titulo">O Que Dizem os Nossos Clientes</h2>
+          <p class="seccao-descricao">
+            A satisfação dos nossos clientes é a nossa maior conquista. Veja o
+            que dizem sobre os nossos serviços em Luanda.
+          </p>
+        </div>
+
+        <!-- Classificação geral -->
+        <div class="classificacao-geral animar-ao-scroll">
+          <div class="classificacao-nota">
+            <strong>4.9</strong>
+            <div class="estrelas-avaliacao" aria-label="4.9 de 5 estrelas">
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg
+                viewBox="0 0 20 20"
+                fill="currentColor"
+                aria-hidden="true"
+                style="opacity: 0.3"
+              >
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <span>Baseado em 47 avaliações</span>
+          </div>
+        </div>
+
+        <!-- Grade de comentários -->
+        <div class="testemunhos-grade">
+          <!-- Comentário 1 -->
+          <article class="cartao-testemunho animar-ao-scroll">
+            <div class="testemunho-estrelas" aria-label="5 estrelas">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="testemunho-texto">
+              "A KIHOTO cuida da limpeza do nosso armazém há mais de 2 anos. O
+              serviço é sempre impecável e a equipa é muito profissional.
+              Recomendo sem hesitar."
+            </p>
+            <div class="testemunho-autor">
+              <div class="autor-avatar">JM</div>
+              <div>
+                <strong>João Manuel</strong>
+                <span>Director de Operações — Logística Luanda</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Comentário 2 -->
+          <article class="cartao-testemunho animar-ao-scroll">
+            <div class="testemunho-estrelas" aria-label="5 estrelas">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="testemunho-texto">
+              "Contratámos a KIHOTO para a recolha de resíduos no nosso
+              condomínio e ficámos muito satisfeitos. São pontuais, organizados
+              e o preço é justo."
+            </p>
+            <div class="testemunho-autor">
+              <div class="autor-avatar">AF</div>
+              <div>
+                <strong>Ana Felismina</strong>
+                <span>Administradora — Condomínio Residencial Talatona</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Comentário 3 -->
+          <article class="cartao-testemunho animar-ao-scroll">
+            <div class="testemunho-estrelas" aria-label="5 estrelas">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="testemunho-texto">
+              "Precisávamos de recolha de resíduos a bordo de navios no Porto de
+              Luanda e a KIHOTO demonstrou grande capacidade técnica e
+              cumprimento de prazos."
+            </p>
+            <div class="testemunho-autor">
+              <div class="autor-avatar">CS</div>
+              <div>
+                <strong>Carlos Sebastião</strong>
+                <span>Agente Marítimo — Porto de Luanda</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Comentário 4 -->
+          <article class="cartao-testemunho animar-ao-scroll">
+            <div class="testemunho-estrelas" aria-label="4 estrelas">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor" style="opacity: 0.3">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="testemunho-texto">
+              "Serviço de limpeza industrial de excelente qualidade. Apenas dou
+              4 estrelas porque gostaria de ver mais rapidez no atendimento
+              inicial, mas no geral é muito bom."
+            </p>
+            <div class="testemunho-autor">
+              <div class="autor-avatar">RM</div>
+              <div>
+                <strong>Ricardo Mendes</strong>
+                <span>Gerente — Fábrica de Alimentos Viana</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Comentário 5 -->
+          <article class="cartao-testemunho animar-ao-scroll">
+            <div class="testemunho-estrelas" aria-label="5 estrelas">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="testemunho-texto">
+              "Compramos materiais de limpeza por grosso na KIHOTO e a relação
+              custo-benefício é excelente. Entrega rápida e produtos de boa
+              qualidade."
+            </p>
+            <div class="testemunho-autor">
+              <div class="autor-avatar">LT</div>
+              <div>
+                <strong>Laura Tavares</strong>
+                <span>Responsável de Compras — Hotel baía de Luanda</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Comentário 6 -->
+          <article class="cartao-testemunho animar-ao-scroll">
+            <div class="testemunho-estrelas" aria-label="5 estrelas">
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+              <svg viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                />
+              </svg>
+            </div>
+            <p class="testemunho-texto">
+              "O facto de estarem disponíveis 24 horas fez toda a diferença numa
+              situação de emergência no nosso espaço comercial. Equipa rápida e
+              eficaz."
+            </p>
+            <div class="testemunho-autor">
+              <div class="autor-avatar">FN</div>
+              <div>
+                <strong>Fernando Neto</strong>
+                <span>Proprietário — Centro Comercial Benfica</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- SECÇÃO CONTACTO                 -->
+    <!-- =============================== -->
+    <section class="seccao-contacto" id="contacto">
+      <div class="conteiner">
+        <div class="seccao-cabecalho animar-ao-scroll">
+          <span class="seccao-etiqueta">Contacto</span>
+          <h2 class="seccao-titulo">Entre em Contacto Connosco</h2>
+          <p class="seccao-descricao">
+            Estamos disponíveis 24 horas para atender a sua solicitação. Ligue,
+            envie mensagem ou preencha o formulário.
+          </p>
+        </div>
+        <div class="contacto-grade">
+          <!-- Informações de contacto -->
+          <div class="contacto-informacoes animar-ao-scroll">
+            <div class="informacao-item">
+              <div class="informacao-icone">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h4>Telefone</h4>
+                <a href="tel:+244923894645" class="informacao-valor"
+                  >923 894 645</a
+                >
+              </div>
+            </div>
+            <div class="informacao-item">
+              <div class="informacao-icone">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <h4>Localização</h4>
+                <p class="informacao-valor">Luanda, Angola</p>
+              </div>
+            </div>
+            <div class="informacao-item">
+              <div class="informacao-icone">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <div>
+                <h4>Horário</h4>
+                <p class="informacao-valor">Aberto 24 horas</p>
+              </div>
+            </div>
+
+            <!-- Botão WhatsApp -->
+            <a
+              href="https://wa.me/244923894645?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+              class="botao-whatsapp-contacto"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Enviar mensagem por WhatsApp"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+                />
+              </svg>
+              Enviar Mensagem no WhatsApp
+            </a>
+          </div>
+
+          <!-- Formulário de contacto -->
+          <form
+            class="formulario-contacto animar-ao-scroll"
+            id="formularioContacto"
+            novalidate
+          >
+            <div class="formulario-grupo">
+              <label for="campo-nome" class="formulario-etiqueta"
+                >Nome Completo</label
+              >
+              <input
+                type="text"
+                id="campo-nome"
+                name="nome"
+                class="formulario-input"
+                placeholder="O seu nome"
+                required
+              />
+            </div>
+            <div class="formulario-grupo">
+              <label for="campo-telefone" class="formulario-etiqueta"
+                >Telefone</label
+              >
+              <input
+                type="tel"
+                id="campo-telefone"
+                name="telefone"
+                class="formulario-input"
+                placeholder="923 000 000"
+                required
+              />
+            </div>
+            <div class="formulario-grupo">
+              <label for="campo-servico" class="formulario-etiqueta"
+                >Serviço Pretendido</label
+              >
+              <select
+                id="campo-servico"
+                name="servico"
+                class="formulario-input"
+                required
+              >
+                <option value="">Seleccione um serviço</option>
+                <option value="limpeza-higiene">Limpeza e Higiene</option>
+                <option value="recolha-domicilio">
+                  Recolha de Resíduos ao Domicílio
+                </option>
+                <option value="recolha-navios">
+                  Recolha de Resíduos a Bordo de Navios
+                </option>
+                <option value="limpeza-portos-aeroportos">
+                  Limpeza em Portos e Aeroportos
+                </option>
+                <option value="comercio-geral">Comércio Geral</option>
+                <option value="servicos-industriais">
+                  Serviços Industriais
+                </option>
+              </select>
+            </div>
+            <div class="formulario-grupo">
+              <label for="campo-mensagem" class="formulario-etiqueta"
+                >Mensagem</label
+              >
+              <textarea
+                id="campo-mensagem"
+                name="mensagem"
+                class="formulario-input formulario-textarea"
+                placeholder="Descreva o que precisa..."
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="botao-primario botao-formulario"
+              id="botaoEnviar"
+            >
+              Enviar Mensagem
+            </button>
+            <div
+              class="formulario-mensagem"
+              id="formularioMensagem"
+              aria-live="polite"
+            ></div>
+          </form>
+        </div>
+
+        <!-- Mapa -->
+        <div class="mapa-caixa animar-ao-scroll">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125475.67949954987!2d13.17400765!3d-8.8368345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1a51f15cdc4f06a7%3A0x7cb5a5a5f5f5f5f5!2sLuanda%2C%20Angola!5e0!3m2!1spt-BR!2sao!4v1700000000000!5m2!1spt-BR!2sao"
+            width="100%"
+            height="350"
+            style="border: 0; border-radius: 16px"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localização da KIHOTO em Luanda, Angola"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== -->
+    <!-- RODAPÉ                          -->
+    <!-- =============================== -->
+    <footer class="rodape" id="rodape">
+      <div class="conteiner rodape-conteudo">
+        <div class="rodape-grade">
+          <!-- Coluna 1: Sobre -->
+          <div class="rodape-coluna">
+            <a
+              href="#inicio"
+              class="logo-link"
+              aria-label="KIHOTO - Página inicial"
+            >
+              <img
+                src="logo.jpeg"
+                alt="KIHOTO – Comércio Geral, Indústria e Prestação de Serviços"
+                class="logo-imagem logo-imagem-rodape"
+              />
+            </a>
+            <p class="rodape-descricao">
+              Comércio Geral, Indústria e Prestação de Serviços. Soluções
+              profissionais de limpeza, recolha de resíduos e serviços
+              industriais em Luanda, Angola.
+            </p>
+          </div>
+
+          <!-- Coluna 2: Serviços -->
+          <div class="rodape-coluna">
+            <h4 class="rodape-titulo">Serviços</h4>
+            <ul class="rodape-lista">
+              <li><a href="#servicos">Limpeza e Higiene</a></li>
+              <li><a href="#servicos">Recolha ao Domicílio</a></li>
+              <li><a href="#servicos">Recolha em Navios</a></li>
+              <li><a href="#servicos">Limpeza em Portos</a></li>
+              <li><a href="#servicos">Comércio Geral</a></li>
+              <li><a href="#servicos">Serviços Industriais</a></li>
+            </ul>
+          </div>
+
+          <!-- Coluna 3: Contactos -->
+          <div class="rodape-coluna">
+            <h4 class="rodape-titulo">Contactos</h4>
+            <ul class="rodape-lista rodape-lista-contactos">
+              <li>
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  class="rodape-icone"
+                >
+                  <path
+                    d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                  />
+                </svg>
+                <a href="tel:+244923894645">923 894 645</a>
+              </li>
+              <li>
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  class="rodape-icone"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span>Luanda, Angola</span>
+              </li>
+              <li>
+                <svg
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                  class="rodape-icone"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span>Aberto 24 horas</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Linha de direitos -->
+        <div class="rodape-direitos">
+          <p>
+            &copy; 2026 KIHOTO – Comércio Geral, Indústria e Prestação de
+            Serviços. Todos os direitos reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =============================== -->
+    <!-- BOTÃO FLUTUANTE WHATSAPP        -->
+    <!-- =============================== -->
+    <a
+      href="https://wa.me/244923894645?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento."
+      class="botao-whatsapp-flutuante"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path
+          d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"
+        />
+      </svg>
+    </a>
+
+    <!-- JavaScript principal -->
+    <script src="script.js"></script>
+  </body>
+</html>
