@@ -22,18 +22,22 @@ var larguraCanvas = 0,
   alturaCanvas = 0,
   tempoAnimacao = 0;
 
+/* ============================== */
+/* Canvas – Corrigido para mobile */
+/* ============================== */
 function redimensionarCanvas() {
-  if (!fundoCanvas) return;
-  var hero = document.getElementById("hero");
-  if (!hero) return;
-  larguraCanvas = hero.offsetWidth;
-  alturaCanvas = hero.offsetHeight;
-  var dpr = Math.min(window.devicePixelRatio || 1, 2);
-  fundoCanvas.width = larguraCanvas * dpr;
-  fundoCanvas.height = alturaCanvas * dpr;
-  fundoCanvas.style.width = larguraCanvas + "px";
-  fundoCanvas.style.height = alturaCanvas + "px";
-  ctx.scale(dpr, dpr);
+    if (!fundoCanvas) return;
+    var hero = document.getElementById('hero');
+    if (!hero) return;
+    larguraCanvas = hero.offsetWidth;
+    alturaCanvas = hero.offsetHeight;
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    fundoCanvas.width = larguraCanvas * dpr;
+    fundoCanvas.height = alturaCanvas * dpr;
+    fundoCanvas.style.width = larguraCanvas + 'px';
+    fundoCanvas.style.height = alturaCanvas + 'px';
+    /* Resetar escala para evitar acumulação */
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
 function Particula(x, y) {
@@ -395,67 +399,65 @@ function inicializarAnimacoesScroll() {
 /* ============================== */
 /* Marquee de Avaliações           */
 /* ============================== */
-var marqueePista = document.getElementById("marqueePista");
+var marqueePista = document.getElementById('marqueePista');
 
 function inicializarMarquee() {
-  if (!marqueePista) return;
-
-  var cartoes = marqueePista.querySelectorAll(".cartao-avaliacao");
-  if (cartoes.length === 0) return;
-
-  /* 1) Duplicar todos os cartões para loop infinito */
-  var htmlOriginal = marqueePista.innerHTML;
-  marqueePista.innerHTML = htmlOriginal + htmlOriginal;
-
-  /* 2) Calcular largura de um conjunto de cartões */
-  /* Esperar o browser renderizar os clones */
-  requestAnimationFrame(function () {
-    var larguraTotal = marqueePista.scrollWidth;
-    var larguraConjunto = larguraTotal / 2; /* metade = um conjunto original */
-
-    /* 3) Calcular duração: ~40px por segundo (velocidade confortável) */
-    var velocidade = 40;
-    var duracao = larguraConjunto / velocidade;
-
-    /* 4) Aplicar duração como variável CSS */
-    marqueePista.style.setProperty("--marquee-duracao", duracao + "s");
-
-    /* 5) Activar animação */
-    marqueePista.classList.add("rodando");
-
-    /* 6) Pausar ao hover (já feito via CSS, mas garantir com JS para mobile) */
-    marqueePista.addEventListener("mouseenter", function () {
-      marqueePista.style.animationPlayState = "paused";
-    });
-    marqueePista.addEventListener("mouseleave", function () {
-      marqueePista.style.animationPlayState = "running";
-    });
-
-    /* 7) Pausar ao tocar (mobile) */
-    marqueePista.addEventListener(
-      "touchstart",
-      function () {
-        marqueePista.style.animationPlayState = "paused";
-      },
-      { passive: true },
-    );
-    marqueePista.addEventListener(
-      "touchend",
-      function () {
-        marqueePista.style.animationPlayState = "running";
-      },
-      { passive: true },
-    );
-  });
-}
-
-/* Recalcular ao redimensionar a janela */
-var temporizadorMarquee = null;
-window.addEventListener("resize", function () {
-  clearTimeout(temporizadorMarquee);
-  temporizadorMarquee = setTimeout(function () {
     if (!marqueePista) return;
 
+    /* Remover clones anteriores se existirem */
+    var cartoesExistentes = marqueePista.querySelectorAll('.cartao-avaliacao');
+    var metade = Math.floor(cartoesExistentes.length / 2);
+    if (cartoesExistentes.length > 6) {
+        for (var r = cartoesExistentes.length - 1; r >= metade; r--) {
+            cartoesExistentes[r].remove();
+        }
+    }
+
+    /* Duplicar para loop infinito */
+    var htmlOriginal = marqueePista.innerHTML;
+    marqueePista.innerHTML = htmlOriginal + htmlOriginal;
+
+    /* Esperar renderização e calcular velocidade */
+    requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+            var larguraTotal = marqueePista.scrollWidth;
+            var larguraConjunto = larguraTotal / 2;
+
+            /* Velocidade: mais lento em mobile, mais rápido em desktop */
+            var velocidade = window.innerWidth < 768 ? 25 : 40;
+            var duracao = Math.max(10, larguraConjunto / velocidade);
+
+            marqueePista.style.setProperty('--marquee-duracao', duracao + 's');
+            marqueePista.classList.add('rodando');
+        });
+    });
+
+    /* Pausar ao hover / toque */
+    marqueePista.addEventListener('mouseenter', function () {
+        marqueePista.style.animationPlayState = 'paused';
+    });
+    marqueePista.addEventListener('mouseleave', function () {
+        marqueePista.style.animationPlayState = 'running';
+    });
+    marqueePista.addEventListener('touchstart', function () {
+        marqueePista.style.animationPlayState = 'paused';
+    }, { passive: true });
+    marqueePista.addEventListener('touchend', function () {
+        marqueePista.style.animationPlayState = 'running';
+    }, { passive: true });
+}
+
+/* Recalcular marquee ao redimensionar */
+var temporizadorMarquee = null;
+window.addEventListener('resize', function () {
+    clearTimeout(temporizadorMarquee);
+    temporizadorMarquee = setTimeout(function () {
+        if (!marqueePista) return;
+        marqueePista.classList.remove('rodando');
+        marqueePista.style.animationPlayState = '';
+        inicializarMarquee();
+    }, 400);
+});
     /* Remover animação, resetar posição */
     marqueePista.classList.remove("rodando");
     marqueePista.style.animationPlayState = "";
