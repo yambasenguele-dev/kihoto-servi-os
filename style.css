@@ -1,62 +1,1675 @@
 /* ============================== */
-/* Marquee de Avaliações           */
+/* Variáveis de Design            */
 /* ============================== */
-var marqueePista = document.getElementById('marqueePista');
-
-function inicializarMarquee() {
-    if (!marqueePista) return;
-
-    /* Remover clones anteriores se existirem */
-    var cartoesExistentes = marqueePista.querySelectorAll('.cartao-avaliacao');
-    var metade = Math.floor(cartoesExistentes.length / 2);
-    if (cartoesExistentes.length > 6) {
-        for (var r = cartoesExistentes.length - 1; r >= metade; r--) {
-            cartoesExistentes[r].remove();
-        }
-    }
-
-    /* Duplicar para loop infinito */
-    var htmlOriginal = marqueePista.innerHTML;
-    marqueePista.innerHTML = htmlOriginal + htmlOriginal;
-
-    /* Esperar renderização e calcular velocidade */
-    requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-            var larguraTotal = marqueePista.scrollWidth;
-            var larguraConjunto = larguraTotal / 2;
-
-            /* Velocidade: mais lento em mobile, mais rápido em desktop */
-            var velocidade = window.innerWidth < 768 ? 25 : 40;
-            var duracao = Math.max(10, larguraConjunto / velocidade);
-
-            marqueePista.style.setProperty('--marquee-duracao', duracao + 's');
-            marqueePista.classList.add('rodando');
-        });
-    });
-
-    /* Pausar ao hover / toque */
-    marqueePista.addEventListener('mouseenter', function () {
-        marqueePista.style.animationPlayState = 'paused';
-    });
-    marqueePista.addEventListener('mouseleave', function () {
-        marqueePista.style.animationPlayState = 'running';
-    });
-    marqueePista.addEventListener('touchstart', function () {
-        marqueePista.style.animationPlayState = 'paused';
-    }, { passive: true });
-    marqueePista.addEventListener('touchend', function () {
-        marqueePista.style.animationPlayState = 'running';
-    }, { passive: true });
+:root {
+    --azul-escuro: #0A2540;
+    --azul-vibrante: #1565C0;
+    --azul-medio: #1E88E5;
+    --verde-agua: #00A896;
+    --verde-agua-escuro: #008F80;
+    --branco: #FFFFFF;
+    --cinza-claro: #F4F7FA;
+    --cinza-medio: #E0E6ED;
+    --cinza-texto: #6B7C93;
+    --sombra-suave: 0 4px 20px rgba(10,37,64,0.08);
+    --sombra-cartao: 0 8px 30px rgba(10,37,64,0.12);
+    --transicao: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    --raio: 16px;
+    --raio-p: 8px;
 }
 
-/* Recalcular marquee ao redimensionar */
-var temporizadorMarquee = null;
-window.addEventListener('resize', function () {
-    clearTimeout(temporizadorMarquee);
-    temporizadorMarquee = setTimeout(function () {
-        if (!marqueePista) return;
-        marqueePista.classList.remove('rodando');
-        marqueePista.style.animationPlayState = '';
-        inicializarMarquee();
-    }, 400);
-});
+/* ============================== */
+/* Reset Global                   */
+/* ============================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--azul-escuro);
+    background: var(--branco);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transicao);
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+/* ============================== */
+/* Recipiente – Mobile First      */
+/* ============================== */
+.recipiente {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* ============================== */
+/* Secção genérica – Mobile First */
+/* ============================== */
+.seccao {
+    padding: 60px 0;
+}
+
+/* ============================== */
+/* Tipografia – Mobile First      */
+/* ============================== */
+.etiqueta-seccao {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--verde-agua);
+    margin-bottom: 12px;
+}
+
+.etiqueta-seccao::before {
+    content: '';
+    width: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--verde-agua), var(--azul-vibrante));
+    border-radius: 2px;
+}
+
+.titulo-seccao {
+    font-size: clamp(24px, 6vw, 48px);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--azul-escuro);
+    margin-bottom: 16px;
+}
+
+.descricao-seccao {
+    font-size: 15px;
+    color: var(--cinza-texto);
+    max-width: 100%;
+    line-height: 1.7;
+}
+
+/* ============================== */
+/* Animações ao Scroll            */
+/* ============================== */
+.animar {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.animar.visivel {
+    opacity: 1;
+    transform: translateY(0);
+}
+.animar.esq {
+    transform: translateX(-30px);
+}
+.animar.esq.visivel {
+    transform: translateX(0);
+}
+.animar.dir {
+    transform: translateX(30px);
+}
+.animar.dir.visivel {
+    transform: translateX(0);
+}
+
+/* ============================== */
+/* CABEÇALHO FIXO – Mobile First  */
+/* ============================== */
+.cabecalho-fixo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(10,37,64,0.06);
+    transition: var(--transicao);
+}
+
+.cabecalho-fixo.rolado {
+    box-shadow: 0 2px 20px rgba(10,37,64,0.1);
+}
+
+.cabecalho-interno {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+}
+
+/* Logo */
+.logo-melhorado {
+    display: flex;
+    align-items: center;
+    z-index: 1001;
+    flex-shrink: 0;
+}
+
+.logo-melhorado img {
+    height: 36px;
+    width: auto;
+    filter: saturate(1.3) brightness(1.05);
+    transition: var(--transicao);
+}
+
+.logo-melhorado:hover img {
+    filter: saturate(1.5) brightness(1.1);
+}
+
+/* Navegação Desktop – escondida em mobile */
+.navegacao-menu {
+    display: none;
+    align-items: center;
+    gap: 32px;
+}
+
+.navegacao-menu a {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--azul-escuro);
+    position: relative;
+    letter-spacing: 0.02em;
+}
+
+.navegacao-menu a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--verde-agua), var(--azul-vibrante));
+    border-radius: 2px;
+    transition: var(--transicao);
+}
+
+.navegacao-menu a:hover::after {
+    width: 100%;
+}
+
+.navegacao-menu a:hover {
+    color: var(--azul-vibrante);
+}
+
+/* Botão CTA – escondido em mobile */
+.botao-cta-cabecalho {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    background: linear-gradient(135deg, var(--azul-vibrante), var(--verde-agua));
+    color: var(--branco);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(0,168,150,0.3);
+    transition: var(--transicao);
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+.botao-cta-cabecalho:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0,168,150,0.4);
+    color: var(--branco);
+}
+
+.botao-cta-cabecalho svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ============================== */
+/* HAMBÚRGUER – Mobile First      */
+/* ============================== */
+.botao-hamburguer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 8px;
+    z-index: 1001;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.botao-hamburguer span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background: var(--azul-escuro);
+    border-radius: 3px;
+    transition: var(--transicao);
+    transform-origin: center;
+}
+
+.botao-hamburguer.aberto span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.botao-hamburguer.aberto span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.botao-hamburguer.aberto span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ============================== */
+/* MENU MOBILE                    */
+/* ============================== */
+.menu-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(10,37,64,0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.menu-mobile-overlay.visivel {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.menu-mobile-painel {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 300px;
+    height: 100vh;
+    height: 100dvh;
+    background: var(--branco);
+    z-index: 999;
+    padding: 80px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
+    box-shadow: -10px 0 40px rgba(10,37,64,0.15);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-mobile-painel.aberto {
+    right: 0;
+}
+
+.link-mobile {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--azul-escuro);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cinza-medio);
+    transition: var(--transicao);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.link-mobile:hover {
+    color: var(--verde-agua);
+    padding-left: 8px;
+}
+
+.botao-cta-mobile {
+    margin-top: 20px;
+    justify-content: center;
+    padding: 14px 24px;
+    font-size: 15px;
+    text-align: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--azul-vibrante), var(--verde-agua));
+    color: var(--branco);
+    border-radius: 50px;
+    border: none;
+}
+
+/* ============================== */
+/* HERO – Mobile First            */
+/* ============================== */
+.seccao-hero {
+    position: relative;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    padding-top: 64px;
+    padding-bottom: 40px;
+    overflow: hidden;
+    background: var(--azul-escuro);
+}
+
+.fundo-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.hero-gradiente-superior {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: radial-gradient(ellipse at 30% 50%, rgba(10,37,64,0.25) 0%, rgba(10,37,64,0.55) 50%, rgba(10,37,64,0.85) 100%);
+    pointer-events: none;
+}
+
+.hero-conteudo {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-texto {
+    color: var(--branco);
+    max-width: 100%;
+}
+
+.hero-texto .etiqueta-seccao {
+    color: var(--verde-agua);
+    justify-content: center;
+}
+
+.hero-texto .etiqueta-seccao::before {
+    background: var(--verde-agua);
+}
+
+.hero-titulo {
+    font-size: clamp(28px, 8vw, 64px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+    color: var(--branco);
+}
+
+.destaque-verde {
+    color: var(--verde-agua);
+}
+
+.hero-subtitulo {
+    font-size: 16px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.7;
+    margin-bottom: 16px;
+    max-width: 100%;
+}
+
+.hero-selo-24h {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,168,150,0.15);
+    border: 1px solid rgba(0,168,150,0.3);
+    padding: 8px 16px;
+    border-radius: 50px;
+    margin-bottom: 24px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--verde-agua);
+}
+
+.hero-selo-24h svg {
+    width: 16px;
+    height: 16px;
+    animation: pulsar 2s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.hero-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.botao-primario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    transition: var(--transicao);
+    letter-spacing: 0.01em;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    white-space: nowrap;
+}
+
+.botao-primario.preenchido {
+    background: linear-gradient(135deg, var(--verde-agua), var(--verde-agua-escuro));
+    color: var(--branco);
+    box-shadow: 0 6px 20px rgba(0,168,150,0.35);
+}
+
+.botao-primario.preenchido:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,168,150,0.45);
+}
+
+.botao-primario.contorno {
+    background: transparent;
+    color: var(--branco);
+    border: 2px solid rgba(255,255,255,0.3);
+}
+
+.botao-primario.contorno:hover {
+    border-color: var(--verde-agua);
+    color: var(--verde-agua);
+}
+
+.botao-primario svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+/* Cartões flutuantes – escondidos em mobile */
+.hero-visual {
+    display: none;
+}
+
+/* ============================== */
+/* SERVIÇOS – Mobile First        */
+/* ============================== */
+.seccao-servicos {
+    background: var(--cinza-claro);
+}
+
+.servicos-cabecalho {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.servicos-cabecalho .descricao-seccao {
+    margin: 0 auto;
+}
+
+.grelha-servicos {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.cartao-servico {
+    background: var(--branco);
+    border-radius: var(--raio);
+    padding: 24px 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(10,37,64,0.06);
+    transition: var(--transicao);
+}
+
+.cartao-servico::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--verde-agua), var(--azul-vibrante));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.cartao-servico:hover::before {
+    transform: scaleX(1);
+}
+
+.cartao-servico:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-cartao);
+}
+
+.icone-servico {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,168,150,0.1), rgba(21,101,192,0.1));
+    transition: var(--transicao);
+}
+
+.cartao-servico:hover .icone-servico {
+    background: linear-gradient(135deg, var(--verde-agua), var(--azul-vibrante));
+}
+
+.icone-servico svg {
+    width: 24px;
+    height: 24px;
+    color: var(--verde-agua);
+    transition: var(--transicao);
+}
+
+.cartao-servico:hover .icone-servico svg {
+    color: var(--branco);
+}
+
+.cartao-servico h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: -0.01em;
+}
+
+.cartao-servico p {
+    font-size: 14px;
+    color: var(--cinza-texto);
+    line-height: 1.65;
+}
+
+/* ============================== */
+/* SOBRE NÓS – Mobile First       */
+/* ============================== */
+.sobre-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: stretch;
+}
+
+.sobre-imagem {
+    position: relative;
+    order: 1;
+}
+
+.sobre-imagem-principal {
+    border-radius: var(--raio);
+    overflow: hidden;
+    box-shadow: var(--sombra-cartao);
+}
+
+.sobre-imagem-principal img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.sobre-estatistica-flutuante {
+    position: absolute;
+    bottom: -16px;
+    right: 16px;
+    background: linear-gradient(135deg, var(--verde-agua), var(--azul-vibrante));
+    color: var(--branco);
+    padding: 16px 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,168,150,0.3);
+    z-index: 2;
+}
+
+.sobre-estatistica-flutuante .numero {
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.sobre-estatistica-flutuante .rotulo {
+    font-size: 11px;
+    font-weight: 500;
+    opacity: 0.85;
+    margin-top: 2px;
+}
+
+.sobre-texto {
+    order: 2;
+}
+
+.sobre-texto .descricao-seccao {
+    margin-bottom: 10px;
+}
+
+.sobre-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.sobre-lista li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--azul-escuro);
+}
+
+.sobre-lista li svg {
+    width: 20px;
+    height: 20px;
+    color: var(--verde-agua);
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+/* ============================== */
+/* PORQUÊ ESCOLHER – Mobile First */
+/* ============================== */
+.seccao-porque {
+    background: var(--azul-escuro);
+    color: var(--branco);
+}
+
+.porque-cabecalho {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.porque-cabecalho .titulo-seccao {
+    color: var(--branco);
+}
+
+.porque-cabecalho .descricao-seccao {
+    color: rgba(255,255,255,0.6);
+    margin: 0 auto;
+}
+
+.grelha-porque {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.cartao-porque {
+    text-align: center;
+    padding: 28px 20px;
+    border-radius: var(--raio);
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: var(--transicao);
+}
+
+.cartao-porque:hover {
+    background: rgba(255,255,255,0.1);
+    transform: translateY(-4px);
+    border-color: rgba(0,168,150,0.3);
+}
+
+.icone-porque {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,168,150,0.2), rgba(21,101,192,0.2));
+    transition: var(--transicao);
+}
+
+.cartao-porque:hover .icone-porque {
+    background: linear-gradient(135deg, var(--verde-agua), var(--azul-vibrante));
+}
+
+.icone-porque svg {
+    width: 24px;
+    height: 24px;
+    color: var(--verde-agua);
+    transition: var(--transicao);
+}
+
+.cartao-porque:hover .icone-porque svg {
+    color: var(--branco);
+}
+
+.cartao-porque h3 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.cartao-porque p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+}
+
+/* ============================== */
+/* AVALIAÇÕES – Marquee Mobile    */
+/* ============================== */
+.seccao-avaliacoes {
+    background: var(--cinza-claro);
+    overflow: hidden;
+    padding-bottom: 60px;
+}
+
+.avaliacoes-cabecalho {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.avaliacoes-cabecalho .descricao-seccao {
+    margin: 0 auto;
+}
+
+.marquee-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+.marquee-pista {
+    display: flex;
+    gap: 16px;
+    width: max-content;
+    will-change: transform;
+    padding: 4px 0;
+}
+
+.marquee-pista.rodando {
+    animation: rolar-marquee var(--marquee-duracao, 30s) linear infinite;
+}
+
+.marquee-pista.rodando:hover {
+    animation-play-state: paused;
+}
+
+@keyframes rolar-marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+.cartao-avaliacao {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--branco);
+    border-radius: var(--raio);
+    padding: 20px 16px;
+    border: 1px solid rgba(10,37,64,0.06);
+    box-shadow: var(--sombra-suave);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.cartao-avaliacao:hover {
+    box-shadow: var(--sombra-cartao);
+    transform: translateY(-3px);
+}
+
+.avaliacao-estrelas {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 10px;
+}
+
+.avaliacao-estrelas svg {
+    width: 16px;
+    height: 16px;
+    color: #F59E0B;
+}
+
+.avaliacao-texto {
+    font-size: 13px;
+    color: var(--cinza-texto);
+    line-height: 1.65;
+    margin-bottom: 14px;
+    font-style: italic;
+    position: relative;
+    padding-left: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.avaliacao-texto::before {
+    content: '\201C';
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-size: 28px;
+    color: var(--verde-agua);
+    font-family: Georgia, serif;
+    line-height: 1;
+    opacity: 0.4;
+}
+
+.avaliacao-autor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.autor-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--verde-agua), var(--azul-vibrante));
+    color: var(--branco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.avaliacao-autor strong {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--azul-escuro);
+}
+
+.avaliacao-autor span {
+    display: block;
+    font-size: 10px;
+    color: var(--cinza-texto);
+    margin-top: 1px;
+}
+
+/* ============================== */
+/* CONTACTO – Mobile First        */
+/* ============================== */
+.seccao-contacto {
+    background: var(--branco);
+}
+
+.contacto-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.contacto-info .titulo-seccao {
+    margin-bottom: 8px;
+}
+
+.contacto-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: var(--cinza-claro);
+    border-radius: var(--raio-p);
+    border: 1px solid rgba(10,37,64,0.06);
+    transition: var(--transicao);
+}
+
+.contacto-item:hover {
+    box-shadow: var(--sombra-suave);
+    transform: translateX(3px);
+}
+
+.contacto-item-icone {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(0,168,150,0.1), rgba(21,101,192,0.1));
+}
+
+.contacto-item-icone svg {
+    width: 20px;
+    height: 20px;
+    color: var(--verde-agua);
+}
+
+.contacto-item h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.contacto-item p {
+    font-size: 13px;
+    color: var(--cinza-texto);
+}
+
+.contacto-item a {
+    color: var(--azul-vibrante);
+    font-weight: 600;
+}
+
+.contacto-item a:hover {
+    color: var(--verde-agua);
+}
+
+.botao-whatsapp-contacto {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: #25D366;
+    color: var(--branco);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    transition: var(--transicao);
+    margin-top: 16px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.botao-whatsapp-contacto:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+    color: var(--branco);
+}
+
+.botao-whatsapp-contacto svg {
+    width: 18px;
+    height: 18px;
+}
+
+.mapa-container {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(10,37,64,0.06);
+    height: 180px;
+}
+
+.mapa-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ============================== */
+/* FORMULÁRIO – Mobile First      */
+/* ============================== */
+.contacto-formulario {
+    background: var(--cinza-claro);
+    padding: 24px 20px;
+    border-radius: var(--raio);
+    border: 1px solid rgba(10,37,64,0.06);
+    box-shadow: var(--sombra-suave);
+}
+
+.contacto-formulario h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.formulario-grupo {
+    margin-bottom: 16px;
+}
+
+.formulario-grupo label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--azul-escuro);
+}
+
+.formulario-grupo input,
+.formulario-grupo textarea,
+.formulario-grupo select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 16px; /* 16px mínimo para evitar zoom no iOS */
+    font-family: inherit;
+    color: var(--azul-escuro);
+    background: var(--branco);
+    border: 2px solid var(--cinza-medio);
+    border-radius: var(--raio-p);
+    transition: var(--transicao);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.formulario-grupo input:focus,
+.formulario-grupo textarea:focus,
+.formulario-grupo select:focus {
+    border-color: var(--verde-agua);
+    box-shadow: 0 0 0 3px rgba(0,168,150,0.1);
+}
+
+.formulario-grupo textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.formulario-grupo select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236B7C93' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+}
+
+.botao-enviar-formulario {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 700;
+    background: #25D366;
+    color: var(--branco);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transicao);
+    box-shadow: 0 4px 15px rgba(37,211,102,0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.botao-enviar-formulario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37,211,102,0.4);
+}
+
+.botao-enviar-formulario svg {
+    width: 18px;
+    height: 18px;
+}
+
+.formulario-mensagem {
+    margin-top: 12px;
+    padding: 12px 14px;
+    border-radius: var(--raio-p);
+    font-size: 13px;
+    font-weight: 500;
+    display: none;
+}
+
+.formulario-mensagem.sucesso {
+    display: block;
+    background: rgba(0,168,150,0.1);
+    color: var(--verde-agua-escuro);
+    border: 1px solid rgba(0,168,150,0.2);
+}
+
+.formulario-mensagem.erro {
+    display: block;
+    background: rgba(220,38,38,0.1);
+    color: #DC2626;
+    border: 1px solid rgba(220,38,38,0.2);
+}
+
+/* ============================== */
+/* RODAPÉ – Mobile First          */
+/* ============================== */
+.rodape {
+    background: var(--azul-escuro);
+    color: rgba(255,255,255,0.7);
+    padding: 40px 0 0;
+}
+
+.rodape-grelha {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.rodape-logo img {
+    height: 32px;
+    filter: brightness(0) invert(1);
+    margin-bottom: 12px;
+}
+
+.rodape-logo p {
+    font-size: 13px;
+    line-height: 1.7;
+    max-width: 100%;
+}
+
+.rodape-coluna h4 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--branco);
+    margin-bottom: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.rodape-coluna a {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+    color: rgba(255,255,255,0.6);
+    transition: var(--transicao);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.rodape-coluna a:hover {
+    color: var(--verde-agua);
+    padding-left: 4px;
+}
+
+.rodape-contacto-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.rodape-contacto-item svg {
+    width: 16px;
+    height: 16px;
+    color: var(--verde-agua);
+    flex-shrink: 0;
+}
+
+.rodape-base {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+}
+
+/* ============================== */
+/* WHATSAPP FLUTUANTE – Mobile    */
+/* ============================== */
+.botao-whatsapp-flutuante {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 900;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #25D366;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(37,211,102,0.4);
+    transition: var(--transicao);
+    animation: pulsar-whatsapp 3s ease-in-out infinite;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.botao-whatsapp-flutuante:hover {
+    transform: scale(1.08);
+}
+
+.botao-whatsapp-flutuante svg {
+    width: 28px;
+    height: 28px;
+    color: var(--branco);
+}
+
+.tooltip-whatsapp {
+    display: none;
+}
+
+@keyframes pulsar-whatsapp {
+    0%, 100% { box-shadow: 0 4px 16px rgba(37,211,102,0.4); }
+    50% { box-shadow: 0 4px 24px rgba(37,211,102,0.6), 0 0 0 8px rgba(37,211,102,0.08); }
+}
+
+/* ============================================================ */
+/* BREAKPOINT: 480px+ (Smartphones grandes / Phablets)          */
+/* ============================================================ */
+@media (min-width: 480px) {
+    .recipiente {
+        padding: 0 20px;
+    }
+
+    .seccao {
+        padding: 70px 0;
+    }
+
+    .hero-botoes {
+        flex-direction: row;
+        max-width: none;
+        justify-content: center;
+    }
+
+    .grelha-servicos {
+        gap: 20px;
+    }
+
+    .cartao-servico {
+        padding: 28px 24px;
+    }
+
+    .sobre-imagem-principal img {
+        height: 280px;
+    }
+
+    .cartao-avaliacao {
+        width: 280px;
+    }
+
+    .mapa-container {
+        height: 200px;
+    }
+
+    .contacto-formulario {
+        padding: 28px 24px;
+    }
+}
+
+/* ============================================================ */
+/* BREAKPOINT: 768px+ (Tablets retrato)                        */
+/* ============================================================ */
+@media (min-width: 768px) {
+    .recipiente {
+        padding: 0 24px;
+    }
+
+    .seccao {
+        padding: 80px 0;
+    }
+
+    .etiqueta-seccao {
+        font-size: 12px;
+        letter-spacing: 3px;
+    }
+
+    .descricao-seccao {
+        font-size: 16px;
+        max-width: 560px;
+    }
+
+    /* Cabeçalho */
+    .cabecalho-interno {
+        height: 72px;
+    }
+
+    .logo-melhorado img {
+        height: 42px;
+    }
+
+    /* Hero */
+    .hero-titulo {
+        font-size: clamp(36px, 6vw, 64px);
+    }
+
+    .hero-subtitulo {
+        font-size: 17px;
+        max-width: 520px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-selo-24h {
+        font-size: 14px;
+    }
+
+    .hero-botoes {
+        gap: 14px;
+    }
+
+    .botao-primario {
+        padding: 16px 32px;
+        font-size: 16px;
+    }
+
+    /* Serviços – 2 colunas */
+    .grelha-servicos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    .cartao-servico h3 {
+        font-size: 19px;
+    }
+
+    .cartao-servico p {
+        font-size: 15px;
+    }
+
+    /* Sobre */
+    .sobre-imagem-principal img {
+        height: 320px;
+    }
+
+    /* Porquê – 2 colunas */
+    .grelha-porque {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+
+    /* Marquee */
+    .cartao-avaliacao {
+        width: 300px;
+        padding: 24px 20px;
+    }
+
+    .avaliacao-texto {
+        font-size: 14px;
+        -webkit-line-clamp: unset;
+    }
+
+    /* Contacto */
+    .mapa-container {
+        height: 220px;
+    }
+
+    /* Rodapé – 2 colunas */
+    .rodape-grelha {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 32px;
+    }
+
+    /* WhatsApp */
+    .botao-whatsapp-flutuante {
+        width: 58px;
+        height: 58px;
+        bottom: 24px;
+        right: 24px;
+    }
+
+    .botao-whatsapp-flutuante svg {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+/* ============================================================ */
+/* BREAKPOINT: 1024px+ (Tablets paisagem / Laptops)            */
+/* ============================================================ */
+@media (min-width: 1024px) {
+    .recipiente {
+        padding: 0 24px;
+    }
+
+    .seccao {
+        padding: 100px 0;
+    }
+
+    .etiqueta-seccao {
+        font-size: 13px;
+    }
+
+    .descricao-seccao {
+        font-size: 17px;
+    }
+
+    /* Cabeçalho – mostrar nav desktop */
+    .cabecalho-interno {
+        height: 80px;
+    }
+
+    .logo-melhorado img {
+        height: 48px;
+    }
+
+    .navegacao-menu {
+        display: flex;
+    }
+
+    .botao-cta-cabecalho {
+        display: inline-flex;
+    }
+
+    .botao-hamburguer {
+        display: none;
+    }
+
+    /* Hero – 2 colunas */
+    .hero-conteudo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        text-align: left;
+    }
+
+    .hero-texto .etiqueta-seccao {
+        justify-content: flex-start;
+    }
+
+    .hero-subtitulo {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .hero-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .hero-cartoes-flutuantes {
+        position: relative;
+        width: 100%;
+        max-width: 440px;
+        aspect-ratio: 1;
+    }
+
+    .hero-cartao-info {
+        position: absolute;
+        background: rgba(255,255,255,0.1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255,255,255,0.15);
+        border-radius: var(--raio);
+        padding: 20px 24px;
+        color: var(--branco);
+        animation: flutuacao 6s ease-in-out infinite;
+    }
+
+    .hero-cartao-info:nth-child(1) { top: 5%; left: 0; animation-delay: 0s; }
+    .hero-cartao-info:nth-child(2) { top: 35%; right: 0; animation-delay: 2s; }
+    .hero-cartao-info:nth-child(3) { bottom: 5%; left: 10%; animation-delay: 4s; }
+
+    @keyframes flutuacao {
+        0%, 100% { transform: translateY(0) scale(1); }
+        50% { transform: translateY(-20px) scale(1.02); }
+    }
+
+    .icone-cartao {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--verde-agua), var(--azul-vibrante));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+
+    .icone-cartao svg {
+        width: 20px;
+        height: 20px;
+        color: var(--branco);
+    }
+
+    .hero-cartao-info h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .hero-cartao-info p { font-size: 13px; color: rgba(255,255,255,0.6); }
+
+    /* Serviços – 3 colunas */
+    .grelha-servicos {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+    }
+
+    .cartao-servico {
+        padding: 36px 28px;
+    }
+
+    .icone-servico {
+        width: 56px;
+        height: 56px;
+    }
+
+    .icone-servico svg {
+        width: 28px;
+        height: 28px;
+    }
+
+    .cartao-servico h3 { font-size: 20px; }
+    .cartao-servico p { font-size: 15px; }
+
+    /* Sobre – 2 colunas */
+    .sobre-conteudo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .sobre-imagem { order: 0; }
+    .sobre-texto { order: 0; }
+
+    .sobre-imagem-principal img {
+        height: 400px;
+    }
+
+    .sobre-estatistica-flutuante {
+        bottom: -24px;
+        right: -24px;
+        padding: 24px 28px;
+        border-radius: var(--raio);
+    }
+
+    .sobre-estatistica-flutuante .numero { font-size: 36px; }
+    .sobre-estatistica-flutuante .rotulo { font-size: 13px; }
+
+    .sobre-lista li { font-size: 15px; }
+
+    /* Porquê – 4 colunas */
+    .grelha-porque {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 28px;
+    }
+
+    .cartao-porque { padding: 36px 20px; }
+    .icone-porque { width: 64px; height: 64px; margin-bottom: 20px; }
+    .icone-porque svg { width: 28px; height: 28px; }
+    .cartao-porque h3 { font-size: 18px; }
+    .cartao-porque p { font-size: 14px; }
+
+    /* Marquee */
+    .marquee-pista { gap: 24px; }
+
+    .cartao-avaliacao {
+        width: 340px;
+        padding: 28px 24px;
+    }
+
+    /* Contacto – 2 colunas */
+    .contacto-conteudo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+    }
+
+    .mapa-container { height: 260px; }
+
+    .contacto-formulario { padding: 36px; }
+    .contacto-formulario h3 { font-size: 22px; margin-bottom: 24px; }
+
+    /* Rodapé – 4 colunas */
+    .rodape-grelha {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+        gap: 40px;
+        padding-bottom: 40px;
+    }
+
+    .rodape-logo img { height: 40px; }
+    .rodape-logo p { font-size: 14px; max-width: 280px; }
+    .rodape-coluna h4 { font-size: 15px; }
+    .rodape-coluna a { font-size: 14px; }
+    .rodape-contacto-item { font-size: 14px; }
+
+    /* WhatsApp tooltip */
+    .tooltip-whatsapp {
+        display: block;
+        position: absolute;
+        right: 72px;
+        white-space: nowrap;
+        background: var(--azul-escuro);
+        color: var(--branco);
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        opacity: 0;
+        transform: translateX(10px);
+        transition: var(--transicao);
+        pointer-events: none;
+    }
+
+    .botao-whatsapp-flutuante:hover .tooltip-whatsapp {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .botao-whatsapp-flutuante {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* ============================================================ */
+/* BREAKPOINT: 1280px+ (Desktop grande)                        */
+/* ============================================================ */
+@media (min-width: 1280px) {
+    .recipiente {
+        padding: 0 32px;
+    }
+}
