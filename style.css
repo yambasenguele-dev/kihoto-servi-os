@@ -297,26 +297,6 @@ button {
 /* MENU MOBILE                    */
 /* ============================== */
 .menu-mobile-overlay {
-    position: fixed;
-    inset: 0;
-    z-index: 998;
-    background: rgba(10,37,64,0.5);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-}
-
-.menu-mobile-overlay.visivel {
-    opacity: 1;
-    pointer-events: all;
-}
-
-/* ============================== */
-/* MENU MOBILE                    */
-/* ============================== */
-.menu-mobile-overlay {
     position-: fixed;
     inset: 0;
     z-index: 998;
@@ -360,10 +340,6 @@ button {
     transform: translateX(0);
     pointer-events: all;
     visibility: visible;
-}
-
-.menu-mobile-painel.aberto {
-    right: 0;
 }
 
 .link-mobile {
