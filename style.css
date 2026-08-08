@@ -313,24 +313,53 @@ button {
     pointer-events: all;
 }
 
+/* ============================== */
+/* MENU MOBILE                    */
+/* ============================== */
+.menu-mobile-overlay {
+    position-: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(10,37,64,0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.menu-mobile-overlay.visivel {
+    opacity: 1;
+    pointer-events: all;
+}
+
 .menu-mobile-painel {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 85%;
     max-width: 300px;
     height: 100vh;
     height: 100dvh;
     background: var(--branco);
     z-index: 999;
-    padding: 80px 24px 24px;
+    padding: 80px 24px 32px;
     display: flex;
     flex-direction: column;
     gap: 0;
-    transition: right 0.4s cubic-bezier(0.4,0,0.2,1);
-    box-shadow: -10px 0 40px rgba(10,37,64,0.15);
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -8px 0 30px rgba(10,37,64,0.15);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.menu-mobile-painel.aberto {
+    transform: translateX(0);
+    pointer-events: all;
+    visibility: visible;
 }
 
 .menu-mobile-painel.aberto {
